@@ -1,0 +1,20 @@
+#coin_news{
+    overflow-y: scroll;
+    height: 80vh;
+
+}
+.news_link{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.news_div{
+
+    padding: 2%;
+    margin: 3%;
+    border: solid grey 1px;
+    box-shadow: 3px 3px 3px 3px grey;
+}
+.news_div:hover{
+    transform: scale(1.05);
+}
