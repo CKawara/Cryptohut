@@ -49,6 +49,7 @@ function displayCoins(coin){
    coinsDiv.id = 'coin_list' 
    img.className = 'coinIcon'
    div.className = 'coins'
+   
 
    img.src = coin.iconUrl
    p.innerText = coin.symbol
@@ -57,6 +58,14 @@ function displayCoins(coin){
    div.appendChild(p)
    div.appendChild(price)
    coinsDiv.appendChild(div)
+
+   if(price.innerText.includes('-')){
+       price.style.color = 'red'
+   }else if (price.innerText.includes('+')){
+       price.style.color = 'green'
+   }else{
+       price.style.color = 'white'
+   }
 
 }
 
