@@ -18,3 +18,29 @@
 .news_div:hover{
     transform: scale(1.05);
 }
+.coinIcon{
+    height: 50px;
+    margin: 3%;
+}
+#coin_list{
+    padding: 3%;
+    width: 20%;
+    overflow: scroll;
+    color: white;
+    background-color: rgb(31, 30, 30);
+    height: 80vh;
+}
+span{
+    margin-left: 3%;
+    font-size: x-large;
+    font-weight: 700;
+}
+.coins{
+    padding: 2%;
+    margin: 3%;
+    border: solid grey 1px;
+}
+.coins > p{
+    margin-top: 7%;
+    font-size: larger;
+}
