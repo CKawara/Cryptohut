@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
     })
     const baseUrl = 'https://api.coinranking.com/v2/coins?_limit=5'
     // to avoid cors error
-    const proxyUrl ='https://cors-anywhere.herokuapp.com/'
+    const proxyUrl ='https://api.allorigins.win/raw?url='
     const apky = 'coinrankingdb49bc8ef3d0298669ef651205be3bed2954f3c4a87a37fa' 
 
 

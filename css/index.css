@@ -25,10 +25,20 @@
 #coin_list{
     padding: 3%;
     width: 20%;
-    overflow: scroll;
+    overflow-y: scroll;
     color: white;
     background-color: rgb(31, 30, 30);
     height: 80vh;
+}
+@media (max-width: 992px) {
+    #coin_list {
+        overflow-x: scroll;
+          display:flex;
+          flex-direction: row;
+          height: 20%;
+          width: 100%;
+ }
+
 }
 span{
     margin-left: 3%;
