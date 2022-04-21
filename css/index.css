@@ -5,9 +5,10 @@
     
 }
 
-#coin_news{
+#news_div{
     overflow-y: scroll;
     height: 80vh;
+    border-top: 2px black solid;
 
 }
 .news_link{
@@ -17,7 +18,7 @@
     font-size: larger;
 }
 .news_div{
-
+    display: flex;
     padding: 2%;
     margin: 3%;
     border: solid grey 1px;
@@ -68,6 +69,27 @@ span{
     color: gold;
 }
 .news_img{
-    height: 100px;
-    width: 150px;
+    height: auto;
+    width: 100px;
+    margin-right: 2%;
+}
+#coin_news {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.card{
+    padding: 3%;
+    margin: 3%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.btn:focus{
+    background-color: #58a771;
+    color: #080909;
+}
+#contact-us{
+    background-color: rgb(34, 50, 50);
+    color: wheat;
+}
+#contact-us i{
+    margin: 3%;
+    font-size: 50px;
 }

@@ -3,33 +3,37 @@ window.addEventListener('DOMContentLoaded', ()=> {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Host': 'crypto-news-live3.p.rapidapi.com',
+            'X-RapidAPI-Host': 'crypto-news15.p.rapidapi.com',
             'X-RapidAPI-Key': '9447803cb3msh4b78e7793a969f3p1c1259jsnca270ba9c9fa'
         }
     };
-    fetch('https://crypto-news-live3.p.rapidapi.com/news', options)
+    fetch('https://crypto-news15.p.rapidapi.com/news', options)
     .then(resp => resp.json())
     .then(data => {
+        // default news display
         for (let i = 70; i < 75; i++){
             displayNews(data[i])
         }
         let buttons = document.getElementsByClassName("btn");
      //returns a nodelist
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function() {
-        if(this.innerText == 'Top Stories'){
-            newsDiv.innerHTML = ''
-            for (let i = 0; i < 6; i++){
-                displayNews(data[i])
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function() {
+                // filter top stories and editors choice manually
+            if(this.innerText == 'Top Stories'){
+                newsDiv.innerHTML = ''
+                for (let i = 0; i < 6; i++){
+                    displayNews(data[i])
+                }
+            }else if (this.innerText == 'Editor\'s Choice'){
+                newsDiv.innerHTML = ''
+                for (let i = 85; i < 90; i++){
+                    displayNews(data[i])
+                }        
             }
-        }else if (this.innerText == 'Editor\'s Choice'){
-            newsDiv.innerHTML = ''
-            for (let i = 80; i < 85; i++){
-                displayNews(data[i])
-            }        
+            
+            }, 
+            false);
         }
-    }, false);
-    }
         for (let i = 11; i < 23; i++){
             displaycards(data[i])
         }
@@ -52,7 +56,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
             resp.json()
             .then(data => {
             data.data.coins.forEach(coin => {
-            displayCoins(coin)
+            // displayCoins(coin)
         })
         })
         .catch((console.error()))
@@ -122,6 +126,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
         img.className = 'news_img'
         a.className = 'news_link'
+        divImg.className ='news_div'
 
         // to display random images to the news 
         document.querySelectorAll('.news_img').forEach(function(img) {
