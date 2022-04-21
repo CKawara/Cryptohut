@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', ()=> { 
+    let newsDiv = document.getElementById('news_div')
     const options = {
         method: 'GET',
         headers: {
@@ -9,9 +10,29 @@ window.addEventListener('DOMContentLoaded', ()=> {
     fetch('https://crypto-news-live3.p.rapidapi.com/news', options)
     .then(resp => resp.json())
     .then(data => {
-        data.forEach(info => { 
-            displayNews(info)
-        });
+        for (let i = 70; i < 75; i++){
+            displayNews(data[i])
+        }
+        let buttons = document.getElementsByClassName("btn");
+     //returns a nodelist
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function() {
+        if(this.innerText == 'Top Stories'){
+            newsDiv.innerHTML = ''
+            for (let i = 0; i < 6; i++){
+                displayNews(data[i])
+            }
+        }else if (this.innerText == 'Editor\'s Choice'){
+            newsDiv.innerHTML = ''
+            for (let i = 80; i < 85; i++){
+                displayNews(data[i])
+            }        
+        }
+    }, false);
+    }
+        for (let i = 11; i < 23; i++){
+            displaycards(data[i])
+        }
     })
     const baseUrl = 'https://api.coinranking.com/v2/coins?_limit=5'
     // to avoid cors error
@@ -82,29 +103,27 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
     }
 
-
+    const picArray = [
+        'assets/126_generated.jpg',
+        'assets/jeremy-bezanger-9opiHRPIvR0-unsplash.jpg',
+        'assets/dylan-calluy-JpflvzEl5cg-unsplash.jpg',
+        'assets/Project_55-02_prev_ui.png',
+        'assets/r1985.jpg',
+        'assets/revenue-icons-vector.png',
+        'assets/Stock_market_or_forex_trading_and_graph_on_smartphone.jpg'
+    ]
 
     function displayNews(info){
-        let picArray = [
-            'assets/126_generated.jpg',
-            'assets/dylan-calluy-JpflvzEl5cg-unsplash.jpg',
-            'assets/jeremy-bezanger-9opiHRPIvR0-unsplash.jpg',
-            'assets/Project_55-02_prev_ui.png',
-            'assets/r1985.jpg',
-            'assets/revenue-icons-vector.png',
-            'assets/Stock_market_or_forex_trading_and_graph_on_smartphone.jpg'
-        ]
-        let newsDiv = document.getElementById('coin_news')
         let div = document.createElement('div')
-        let divImg = document.createElement('div')
+        var divImg = document.createElement('div')
         let a = document.createElement('a')
         let source = document.createElement('p')
         let img = document.createElement('img')
 
         img.className = 'news_img'
         a.className = 'news_link'
-        divImg.className = 'news_div'
 
+        // to display random images to the news 
         document.querySelectorAll('.news_img').forEach(function(img) {
             const randomPic = Math.floor((Math.random() * picArray.length));
           img.src = picArray[randomPic];
@@ -119,5 +138,37 @@ window.addEventListener('DOMContentLoaded', ()=> {
         divImg.appendChild(div)
         newsDiv.appendChild(divImg)
 
+    }
+    function displaycards(info){
+        let news_cards = document.getElementById('news_cards')
+        let columns = document.createElement('div')
+        let div = document.createElement('div')
+        let card = document.createElement('div')
+        let a = document.createElement('a')
+        let p = document.createElement('p')
+        let img = document.createElement('img')
+
+        img.className = 'card_img'
+        img.style.width = 'auto'
+        img.style.height = 'auto'
+        a.className = 'news_link'
+        card.className = 'card'
+        columns.className = "col-lg-4 col-md-6"
+
+        // to display random images to the news 
+        document.querySelectorAll('.card_img').forEach(function(img) {
+            const randomPic = Math.floor((Math.random() * picArray.length));
+          img.src = picArray[randomPic];
+        });
+
+        a.href = info.url
+        a.innerText = info.title
+        p.innerText = info.source
+        card.appendChild(img)
+        div.appendChild(a)
+        div.appendChild(p)
+        card.appendChild(div)
+        columns.appendChild(card)
+        news_cards.appendChild(columns)
     }
 }) 

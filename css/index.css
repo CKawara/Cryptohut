@@ -1,3 +1,10 @@
+#home{
+    height: 85vh;
+    background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(53, 54, 52, 0.7)), url('../assets/maxim-hopman-fiXLQXAhCfk-unsplash.jpg');
+    background-size: cover;
+    
+}
+
 #coin_news{
     overflow-y: scroll;
     height: 80vh;
