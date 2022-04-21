@@ -44,3 +44,7 @@ span{
     margin-top: 7%;
     font-size: larger;
 }
+
+.starred{
+    color: gold;
+}

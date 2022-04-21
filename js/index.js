@@ -1,88 +1,104 @@
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Host': 'crypto-news-live3.p.rapidapi.com',
-		'X-RapidAPI-Key': '9447803cb3msh4b78e7793a969f3p1c1259jsnca270ba9c9fa'
-	}
-};
-fetch('https://crypto-news-live3.p.rapidapi.com/news', options)
-.then(resp => resp.json())
-.then(data => {
-    data.forEach(info => { 
-        displayNews(info)
-    });
-})
-const baseUrl = 'https://api.coinranking.com/v2/coins?_limit=5'
-   // to avoid cors error
-const proxyUrl ='https://cors-anywhere.herokuapp.com/'
-const apky = 'coinrankingdb49bc8ef3d0298669ef651205be3bed2954f3c4a87a37fa' 
+window.addEventListener('DOMContentLoaded', ()=> { 
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Host': 'crypto-news-live3.p.rapidapi.com',
+            'X-RapidAPI-Key': '9447803cb3msh4b78e7793a969f3p1c1259jsnca270ba9c9fa'
+        }
+    };
+    fetch('https://crypto-news-live3.p.rapidapi.com/news', options)
+    .then(resp => resp.json())
+    .then(data => {
+        data.forEach(info => { 
+            displayNews(info)
+        });
+    })
+    const baseUrl = 'https://api.coinranking.com/v2/coins?_limit=5'
+    // to avoid cors error
+    const proxyUrl ='https://cors-anywhere.herokuapp.com/'
+    const apky = 'coinrankingdb49bc8ef3d0298669ef651205be3bed2954f3c4a87a37fa' 
 
 
-fetch(`${proxyUrl}${baseUrl}`,{
-    method: 'GET',
-    Headers: {
-        'Content-type': 'application/json',
-        'x-access-token': `${apky }`,
-        'Access-Control-Allow-origin': '*'
+    fetch(`${proxyUrl}${baseUrl}`,{
+        method: 'GET',
+        Headers: {
+            'Content-type': 'application/json',
+            'x-access-token': `${apky }`,
+            'Access-Control-Allow-origin': '*'
+        }
+    }).then(resp => {
+        if(resp.ok){
+            resp.json()
+            .then(data => {
+            data.data.coins.forEach(coin => {
+            displayCoins(coin)
+        })
+        })
+        .catch((console.error()))
     }
-}).then(resp => {
-    if(resp.ok){
-        resp.json()
-        .then(data => {
-        data.data.coins.forEach(coin => {
-        displayCoins(coin)
+        
     })
-    })
-    .catch((console.error()))
-}
-    
-})
 
 
-function displayCoins(coin){
-   let coinsDiv = document.querySelector('.crypto') 
-   let div = document.createElement('div')
-   let img = document.createElement('img')
-   let p = document.createElement('span')
-   let price = document.createElement('p')
+    function displayCoins(coin){
+        let coinsDiv = document.querySelector('.crypto') 
+        let div = document.createElement('div')
+        let img = document.createElement('img')
+        let p = document.createElement('span')
+        let price = document.createElement('p')
+        let i = document.createElement('span')
 
-   coinsDiv.id = 'coin_list' 
-   img.className = 'coinIcon'
-   div.className = 'coins'
-   
+        coinsDiv.id = 'coin_list' 
+        img.className = 'coinIcon'
+        div.className = 'coins'
+        
 
-   img.src = coin.iconUrl
-   p.innerText = coin.symbol
-   price.innerText = `${coin.change}%`
-   div.appendChild(img)
-   div.appendChild(p)
-   div.appendChild(price)
-   coinsDiv.appendChild(div)
+        img.src = coin.iconUrl
+        p.innerText = coin.symbol
+        price.innerText = `${coin.change}%`
+        i.innerHTML = '<i class="fa-solid fa-star"></i>'
+        div.appendChild(img)
+        div.appendChild(p)
+        div.appendChild(price)
+        div.appendChild(i)
+        coinsDiv.appendChild(div)
 
-   if(price.innerText.includes('-')){
-       price.style.color = 'red'
-   }else if (price.innerText.includes('+')){
-       price.style.color = 'green'
-   }else{
-       price.style.color = 'white'
-   }
+        if(price.innerText.includes('-')){
+            price.style.color = 'red'
+        }else if (price.innerText.includes('+')){
+            price.style.color = 'green'
+        }else{
+            price.style.color = 'white'
+        }
 
-}
+        i.addEventListener('click', ()=>{
+            if(i.className != 'starred'){
+                i.className = 'starred'
+            }else{
+                i.classList.remove('starred')
+            }
+            
+        })
+
+    }
 
 
-function displayNews(info){
-    let newsDiv = document.getElementById('coin_news')
-    let div = document.createElement('div')
-    let a = document.createElement('a')
-    let source = document.createElement('p')
 
-    a.className = 'news_link'
-    div.className = 'news_div'
+    function displayNews(info){
+        let newsDiv = document.getElementById('coin_news')
+        let div = document.createElement('div')
+        let a = document.createElement('a')
+        let source = document.createElement('p')
 
-    a.href = info.url
-    a.innerText = info.title
-    source.innerText = info.source
-    div.appendChild(a)
-    div.appendChild(source)
-    newsDiv.appendChild(div)
-}
+        a.className = 'news_link'
+        div.className = 'news_div'
+
+        a.href = info.url
+        a.innerText = info.title
+        source.innerText = info.source
+        div.appendChild(a)
+        div.appendChild(source)
+        newsDiv.appendChild(div)
+
+    }
+}) 
