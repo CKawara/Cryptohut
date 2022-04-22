@@ -1,6 +1,7 @@
 # Cryptohut
 A cryptocurrency news site, that uses various  APIs to fetch crypto news and prices for the top currencies. It was built using HTML, CSS and bootstrap for the look and feel. 
 Javascript was used to fetch sata from the APIs and displat them on the site. The APIs used were Rapid API for the news, and CoinRanking API for the coins/' details.
+
 The site has the following features;
 1. Landing Page
 2. General news section
@@ -9,11 +10,11 @@ The site has the following features;
 5. Star Favorite Cryptocurrency function
 
 ## Demo
-Here's the live demo 
+Here's the live demo https://ckawara.github.io/Cryptohut/
 
 ## Setup and Installation
 1. Fork the repository
-2. clone the repository to your a local repository: git clone https://github.com/CKawara/Dish-E.git
+2. clone the repository to your a local repository: git clone https://github.com/CKawara/Cryptohut.git
 3. Get your authentication key from Rapid API and CoinRanking API
 4. Create your branch
 5. Add and commit changes
@@ -35,7 +36,7 @@ To use the site you'll need;
 - [Catherine Kawara](https://github.com/CKawara/)
 
 ## License
-[MIT licence]()
+[MIT licence](https://github.com/CKawara/Cryptohut/blob/main/LICENSE)
 
 
 
