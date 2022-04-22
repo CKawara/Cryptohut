@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color :#f7fef7
+    background: linear-gradient(rgba(217, 250, 228, 0.591), rgb(233, 247, 233));
 }
 .navbar-brand{
     color: wheat !important;
@@ -10,17 +10,34 @@ body{
     color: wheat !important;
 }
 #home{
+    color: white;
+    text-align: center;
+    padding: 5%;
     height: 85vh;
-    /* background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(53, 54, 52, 0.7)), url('../assets/maxim-hopman-fiXLQXAhCfk-unsplash.jpg'); */
+    background:linear-gradient(rgba(0, 0, 0, 0.9), rgba(19, 28, 28, 0.7)), url('../assets/jeremy-bezanger-9opiHRPIvR0-unsplash.jpg');
     background-size: cover;
-    
 }
-
+#home p:first-child{
+    font-size: 50px;
+    font-weight: 600;
+}#home p:last-child{
+    font-size: 30px;
+    font-weight: 400;
+}
+#home span{
+    color: aquamarine;
+}
+#home i{
+    margin-top: 10%;
+    font-size: 100px;
+    color: aquamarine;
+}
 #news_div{
     height: 70vh;
     border-top: 2px rgb(34, 50, 50) solid;
 
 }
+
 .news_link{
     text-decoration: none;
     color: black;
@@ -60,7 +77,7 @@ body{
  }
 
 }
-span{
+#coin_list span{
     margin-left: 3%;
     font-size: x-large;
     font-weight: 700;
@@ -90,21 +107,26 @@ span{
     border: solid #e9f7e9 1px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     margin: 2%;
-    padding: 5%;
+    padding: 3%;
 
 }
-
 .card{
-    background-image: linear-gradient(rgba(217, 250, 228, 0.591), rgb(233, 247, 233));
+    background-color: #e9f7e9;
     padding: 3%;
     margin: 3%;
     border-radius: 20px;
 }
+.card:hover{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+}
 .btn:focus{
     background-color: rgb(34, 50, 50);
     color: #e9f7e9;
+    outline: none;
 }
 #contact-us{
+    padding: 2%;
     background-color: rgb(34, 50, 50);
     color: wheat;
     font-size: x-large;
@@ -117,10 +139,18 @@ span{
     padding: 2%;
     background-color: wheat;
     border-radius: 10px;
-    width: fit-content;
-    margin-top: auto;
+    margin-top: 3%;
 }
 .form-control{
     background: none !important;
     color: #f7fef7 !important;
+}
+footer{
+    background-color: rgb(31, 30, 30);
+    color: #e9f7e9;
+    text-align: center;
+    padding: 1px;
+}
+footer span{
+    color: aquamarine;
 }

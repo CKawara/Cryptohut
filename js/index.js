@@ -7,61 +7,61 @@ window.addEventListener('DOMContentLoaded', ()=> {
             'X-RapidAPI-Key': '9447803cb3msh4b78e7793a969f3p1c1259jsnca270ba9c9fa'
         }
     };
-    // fetch('https://crypto-news14.p.rapidapi.com/news/cointelegraph', options)
-    // .then(resp => resp.json())
-    // .then(data => {
-    //     // default news display
-    //     for (let i = 0; i < 5; i++){
-    //         displayNews(data[i])
-    //     }
-    //     let buttons = document.getElementsByClassName("btn");
-    //  //returns a nodelist
-    //     for (let i = 0; i < buttons.length; i++) {
-    //         buttons[i].addEventListener("click", function() {
-    //             // filter top stories and editors choice manually
-    //         if(this.innerText == 'Top Stories'){
-    //             newsDiv.innerHTML = ''
-    //             for (let i = 6; i < 10; i++){
-    //                 displayNews(data[i])
-    //             }
-    //         }else if (this.innerText == 'Editor\'s Choice'){
-    //             newsDiv.innerHTML = ''
-    //             for (let i = 11; i < 15; i++){
-    //                 displayNews(data[i])
-    //             }        
-    //         }
-    //         }, 
-    //         false);
-    //     }
-    //     for (let i = 16; i < data.length; i++){
-    //         displaycards(data[i])
-    //     }
-    // })
+    fetch('https://crypto-news14.p.rapidapi.com/news/cointelegraph', options)
+    .then(resp => resp.json())
+    .then(data => {
+        // default news display
+        for (let i = 0; i < 5; i++){
+            displayNews(data[i])
+        }
+        let buttons = document.getElementsByClassName("btn");
+     //returns a nodelist
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function() {
+                // filter top stories and editors choice manually
+            if(this.innerText == 'Top Stories'){
+                newsDiv.innerHTML = ''
+                for (let i = 5; i < 10; i++){
+                    displayNews(data[i])
+                }
+            }else if (this.innerText == 'Editor\'s Choice'){
+                newsDiv.innerHTML = ''
+                for (let i = 11; i < 16; i++){
+                    displayNews(data[i])
+                }        
+            }
+            }, 
+            false);
+        }
+        for (let i = 16; i < data.length; i++){
+            displaycards(data[i])
+        }
+    })
     const baseUrl = 'https://api.coinranking.com/v2/coins?_limit=5'
     // to avoid cors error
     const proxyUrl ='https://api.allorigins.win/raw?url='
     const apky = 'coinrankingdb49bc8ef3d0298669ef651205be3bed2954f3c4a87a37fa' 
 
 
-    // fetch(`${proxyUrl}${baseUrl}`,{
-    //     method: 'GET',
-    //     Headers: {
-    //         'Content-type': 'application/json',
-    //         'x-access-token': `${apky }`,
-    //         'Access-Control-Allow-origin': '*'
-    //     }
-    // }).then(resp => {
-    //     if(resp.ok){
-    //         resp.json()
-    //         .then(data => {
-    //         data.data.coins.forEach(coin => {
-    //         displayCoins(coin)
-    //     })
-    //     })
-    //     .catch((console.error()))
-    // }
+    fetch(`${proxyUrl}${baseUrl}`,{
+        method: 'GET',
+        Headers: {
+            'Content-type': 'application/json',
+            'x-access-token': `${apky }`,
+            'Access-Control-Allow-origin': '*'
+        }
+    }).then(resp => {
+        if(resp.ok){
+            resp.json()
+            .then(data => {
+            data.data.coins.forEach(coin => {
+            displayCoins(coin)
+        })
+        })
+        .catch((console.error()))
+    }
         
-    // })
+    })
 
 
     function displayCoins(coin){
